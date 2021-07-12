@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
-    "type": "module",
     "scripts": {
         "dev": "nodemon --config nodemon.json",
-        "build": "node scripts/builder.js"
+        "build": "NODE_ENV=production node scripts/builder.js",
+        "start": "NODE_ENV=production node build/index.js"
     },
     "dependencies": {
         "dotenv": "^10.0.0",

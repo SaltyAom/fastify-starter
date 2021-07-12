@@ -1,22 +1,27 @@
-import esbuild from 'esbuild'
-import { nodeExternalsPlugin } from 'esbuild-node-externals'
-import alias from 'esbuild-plugin-alias'
+/* eslint-disable no-undef */
+const esbuild = require('esbuild')
+const { nodeExternalsPlugin } = require('esbuild-node-externals')
+const alias = require('esbuild-plugin-alias')
 
-import { resolve } from 'path'
+const { resolve } = require('path')
 
-esbuild.build({
-    entryPoints: ['src/index.ts'],
-    platform: 'node',
-    format: 'esm',
-    target: 'node14',
-    outdir: '.dev',
-    logLevel: 'error',
-    bundle: true,
-    plugins: [
-        nodeExternalsPlugin(),
-        alias({
-            '@modules': resolve('./src/modules'),
-            '@services': resolve('./src/services'),
-        })
-    ]
-})
+const append = require('../scripts/append.js')
+
+esbuild
+    .build({
+        entryPoints: ['src/index.ts'],
+        platform: 'node',
+        format: 'cjs',
+        target: 'node14',
+        outdir: '.dev',
+        bundle: true,
+        logLevel: 'error',
+        plugins: [
+            nodeExternalsPlugin(),
+            alias({
+                '@modules': resolve('./src/modules'),
+                '@services': resolve('./src/services')
+            })
+        ]
+    })
+    .then(append)

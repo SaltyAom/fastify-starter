@@ -14,7 +14,8 @@
         "indent": ["warn", 4],
         "linebreak-style": ["warn", "unix"],
         "quotes": ["warn", "single"],
-        "semi": ["warn", "never"]
+        "semi": ["warn", "never"],
+        "@typescript-eslint/no-var-requires": ["off"]
     },
     "ignorePatterns": ["builder.js", "register.js", "build/*"]
 }
