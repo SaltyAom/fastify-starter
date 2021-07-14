@@ -19,7 +19,7 @@ const main = () =>
         .register(helmet)
         .register(compress)
         .register(staticPlugin, {
-            root: resolve('../public')
+            root: resolve('./public')
         })
         .register(base)
         .listen(8080, '0.0.0.0', (error, address) => {

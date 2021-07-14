@@ -1,11 +1,11 @@
-import type { FastifyInstance } from 'fastify'
+import type { FastifyPluginCallback } from 'fastify'
 
-const base = (app: FastifyInstance) => {
-    app.get("/", (req, res) => {
-        res.send("Working")
+const base: FastifyPluginCallback = (app, _, done) => {
+    app.get('/', async (_req, res) => {
+        res.send('Working')
     })
 
-    return app
+    done()
 }
 
 export default base
