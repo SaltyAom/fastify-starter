@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-
 const { readFileSync, writeFileSync } = require('fs')
 const { resolve } = require('path')
 

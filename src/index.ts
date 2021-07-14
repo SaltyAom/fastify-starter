@@ -4,13 +4,10 @@ import helmet from 'fastify-helmet'
 import compress from 'fastify-compress'
 import staticPlugin from 'fastify-static'
 
-import dotenv from 'dotenv'
 import { resolve } from 'path'
 
 import base from '@modules/base'
 import run from '@services/cluster'
-
-dotenv.config()
 
 const app = fastify()
 
