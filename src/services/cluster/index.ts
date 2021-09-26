@@ -1,5 +1,7 @@
-import { isMaster, fork } from 'cluster'
+import cluster from 'cluster'
 import { cpus } from 'os'
+
+const { isMaster, fork } = cluster
 
 const available = cpus().length
 
