@@ -7,8 +7,12 @@
         "moduleResolution": "node",
         "baseUrl": "src",
         "paths": {
+            "@modules": ["modules/index.ts"],
             "@modules/*": ["modules/*"],
-            "@services/*": ["services/*"]
+            "@services": ["services/index.ts"],
+            "@services/*": ["services/*"],
+            "~": ["index.ts"],
+            "~/*": ["*"]
         },
         "esModuleInterop": true,
         "skipLibCheck": true,

@@ -1,20 +1,21 @@
+import env from 'dotenv'
+env.config()
+
 import fastify from 'fastify'
 
 import helmet from 'fastify-helmet'
-import compress from 'fastify-compress'
 import staticPlugin from 'fastify-static'
 
 import { resolve } from 'path'
 
-import base from '@modules/base'
-import run from '@services/cluster'
+import { base } from '@modules'
+import { run } from '@services'
 
 const app = fastify()
 
-const main = () => 
+const main = () =>
     app
         .register(helmet)
-        .register(compress)
         .register(staticPlugin, {
             root: resolve('./public')
         })

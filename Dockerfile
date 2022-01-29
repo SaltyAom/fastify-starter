@@ -1,42 +1,38 @@
-FROM node:16-alpine as builder
+FROM node:16-alpine3.14 as builder
 
 WORKDIR /usr/app
 
-COPY package.json .
-COPY yarn.lock .
+RUN npm install -g pnpm
 
-RUN yarn --frozen-lockfile
+COPY package.json .
+COPY pnpm-lock.yaml .
+
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
 RUN yarn build
 
 # * ====================
-FROM node:16-alpine as modules
+FROM node:16-alpine3.14 as modules
 
 WORKDIR /usr/app
 
-RUN apk --no-cache add curl bash
-RUN curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
+RUN npm install -g pnpm
 
 COPY package.json .
-COPY yarn.lock .
+COPY pnpm-lock.yaml .
 
-RUN yarn --frozen-lockfile --production
-RUN npm prune --production
-RUN /usr/local/bin/node-prune
+RUN pnpm install --frozen-lockfile --production
 
 # * ====================
-FROM alpine:latest as main
-
-RUN apk --no-cache add nodejs
+FROM node:16-alpine3.14 as main
 
 WORKDIR /usr/app/
 
 COPY --from=modules /usr/app/node_modules node_modules
 COPY --from=builder /usr/app/build build
 COPY package.json .
-COPY .env .
 COPY public public
 
 ENV NODE_ENV production
