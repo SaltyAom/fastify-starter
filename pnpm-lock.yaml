@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@swc/cli': ^0.1.55
   '@swc/core': ^1.2.135
   '@swc/jest': ^0.2.17
   '@types/jest': ^27.4.0
@@ -27,6 +28,7 @@ dependencies:
   fastify-static: 4.5.0
 
 devDependencies:
+  '@swc/cli': 0.1.55_@swc+core@1.2.135
   '@swc/core': 1.2.135
   '@swc/jest': 0.2.17_@swc+core@1.2.135
   '@types/jest': 27.4.0
@@ -667,6 +669,24 @@ packages:
     resolution: {integrity: sha512-OAPJUAtgeINhh/TAlUID4QTs53Njm7xzddaVlEs/SXwgtiD1tW22zAB/W1wdqfrpmikgaWQ9Fw6Ws+hsiRm5Vg==}
     dependencies:
       '@sinonjs/commons': 1.8.3
+    dev: true
+
+  /@swc/cli/0.1.55_@swc+core@1.2.135:
+    resolution: {integrity: sha512-akkLuRexFq8XTi6JNZ27mXD4wcKXLDSLj4g7YMU+/upFM8IeD1IEp1Mxtre7MzCZn+QOQgPF8N8IReJoHuSn3g==}
+    engines: {node: '>= 12.13'}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': ^1.2.66
+      chokidar: ^3.5.1
+    peerDependenciesMeta:
+      chokidar:
+        optional: true
+    dependencies:
+      '@swc/core': 1.2.135
+      commander: 7.2.0
+      fast-glob: 3.2.7
+      slash: 3.0.0
+      source-map: 0.7.3
     dev: true
 
   /@swc/core-android-arm-eabi/1.2.135:
@@ -1512,6 +1532,11 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
+    dev: true
+
+  /commander/7.2.0:
+    resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
+    engines: {node: '>= 10'}
     dev: true
 
   /concat-map/0.0.1:

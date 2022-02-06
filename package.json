@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "nodemon --config nodemon.json",
-        "build": "ts-node scripts/swc.ts",
+        "build": "swc src -d build",
         "start": "NODE_ENV=production node build",
         "test": "jest"
     },
@@ -16,6 +16,7 @@
         "fastify-static": "^4.5.0"
     },
     "devDependencies": {
+        "@swc/cli": "^0.1.55",
         "@swc/core": "^1.2.135",
         "@swc/jest": "^0.2.17",
         "@types/jest": "^27.4.0",
