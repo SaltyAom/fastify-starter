@@ -1,10 +1,9 @@
-import env from 'dotenv'
-env.config()
+import 'dotenv/config'
 
 import fastify from 'fastify'
 
-import helmet from 'fastify-helmet'
-import staticPlugin from 'fastify-static'
+import helmet from '@fastify/helmet'
+import staticPlugin from '@fastify/static'
 
 import { resolve } from 'path'
 
@@ -20,10 +19,16 @@ const main = () =>
             root: resolve('./public')
         })
         .register(base)
-        .listen(8080, '0.0.0.0', (error, address) => {
-            if (error) return console.error(error)
+        .listen(
+            {
+                host: '0.0.0.0',
+                port: 8080
+            },
+            (error, address) => {
+                if (error) return console.error(error)
 
-            console.log(`Running at ${address}`)
-        })
+                console.log(`Running at ${address}`)
+            }
+        )
 
 run(main)
